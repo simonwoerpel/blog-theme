@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>medienrevolte</h1>
+<p>Blog von <a href="{{ SITEURL }}/ueber.html">Simon Wörpel</a>, Journalist, Entwickler</p>
+<h2>Error:</h2>
+  <pre>
+<code>>>> from life.time import available_time
+Traceback (most recent call last):
+    File "/home/simonwoerpel/Websites/medienrevolte.de/blog/life/time.py", line 5, in <module>
+        available_time()
+    File "/home/simonwoerpel/Websites/medienrevolte.de/blog/life/time.py", line 2, in available_time
+        raise TimeError('Not enough time available to write a blog')
+TimeError: Not enough time available to write a blog</code>
+  </pre>
+  </p>
+  {#
+  <section id="bloglist">
+    <h2>All articles</h2>
+
+    <ol id="post-list">
+      {% for article in articles_page.object_list %}
+      <li><article class="hentry">
+          <header> <h2 class="entry-title"><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2> </header>
+          <footer class="post-info">
+            <abbr class="published" title="{{ article.date.isoformat() }}"> {{ article.locale_date }} </abbr>
+            <address class="vcard author">By
+              {% for author in article.authors %}
+              <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
+              {% endfor %}
+            </address>
+          </footer><!-- /.post-info -->
+          <div class="entry-content"> {{ article.summary }} </div><!-- /.entry-content -->
+        </article></li>
+        {% endfor %}
+    </ol><!-- /#posts-list -->
+    {% include 'pagination.html' %}
+  </section><!-- /#content -->
+  #}
+
+{% endblock content %}
